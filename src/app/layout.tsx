@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import AppProvider from "@/provider/app-provider";
+// Data static for now
+import { subjects } from "@/data/subjects";
+import { topics } from "@/data/topics";
+import { questions } from "@/data/questions";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +33,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        inter.variable,
+      )}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      {/* nice one... */}
+      <body>
+        <AppProvider subjects={subjects} topics={topics} questions={questions}>
+          <div className="h-dvh flex flex-col max-w-3xl m-auto p-3">
+            {children}
+          </div>
+        </AppProvider>
+      </body>
     </html>
   );
 }
