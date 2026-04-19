@@ -121,6 +121,7 @@ function RenderQuestion() {
             examQ={examQ}
             marked={currentExam.questions[currentIndex].marked}
             disabled={examEnded}
+            examEnded={examEnded}
           />
         </div>
       </div>
@@ -176,10 +177,12 @@ const QuestionInt = ({
   examQ,
   marked,
   disabled,
+  examEnded,
 }: {
   examQ: ExamQuestion;
   marked: boolean;
   disabled: boolean;
+  examEnded: boolean;
 }) => {
   const { questionMap, setCurrentExam } = useExamContext();
   const question = questionMap.get(examQ.question);
@@ -196,13 +199,15 @@ const QuestionInt = ({
     });
   };
 
+  const showAnswer = marked || examEnded;
+
   const getOptionStyle = (option: string) => {
-    if (!marked) {
+    if (!showAnswer) {
       return examQ.userAnswer === option
         ? "bg-primary text-primary-foreground"
         : "";
     }
-    // after marking: green for correct, red for wrong selection
+    // after marking or exam ended: green for correct, red for wrong selection
     if (option === question.answer)
       return "bg-green-600 text-white border-green-600";
     if (examQ.userAnswer === option)
@@ -214,7 +219,7 @@ const QuestionInt = ({
     <div className="grid gap-3">
       <p className="text-lg font-medium">{question.question}</p>
       <div className="grid gap-2">
-        {question.options.map((option) => (
+        {(examQ.shuffledOptions ?? question.options).map((option) => (
           <Button
             key={option}
             variant="outline"
@@ -225,6 +230,11 @@ const QuestionInt = ({
           </Button>
         ))}
       </div>
+      {showAnswer && question.explanation && (
+        <p className="text-sm text-muted-foreground mt-2">
+          {question.explanation}
+        </p>
+      )}
     </div>
   );
 };

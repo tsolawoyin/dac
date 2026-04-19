@@ -45,6 +45,7 @@ export interface ExamQuestion {
   id: string;
   position: number;
   question: string; // id of question
+  shuffledOptions: string[];
   userAnswer: string; // done....
   marked: boolean;
 }
@@ -217,10 +218,20 @@ const getRandomQuestions = (
     (q) => q.subject === subjectId && q.topic === topicId && q.is_visible,
   );
 
+  const shuffleArray = <T,>(arr: T[]): T[] => {
+    const s = [...arr];
+    for (let i = s.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [s[i], s[j]] = [s[j], s[i]];
+    }
+    return s;
+  };
+
   const toExamQuestion = (q: Question, index: number): ExamQuestion => ({
     id: v4(),
     position: index,
     question: q.id,
+    shuffledOptions: shuffleArray(q.options),
     userAnswer: "",
     marked: false,
   });

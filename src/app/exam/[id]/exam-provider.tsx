@@ -29,7 +29,7 @@ export default function ExamProvider({
 }) {
   const exam = useExam(examId); // hmmm. sharp stuff... nice and easy....
 
-  if (!exam) return <div>Exam not found or does not exist.</div>;
+  if (!exam) return <div>Loading...</div>;
 
   return <ExamContext.Provider value={exam}>{children}</ExamContext.Provider>;
 }
