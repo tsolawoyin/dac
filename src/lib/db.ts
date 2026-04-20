@@ -10,7 +10,7 @@ export type AppDB = Dexie & {
 export const db = new Dexie("dac") as AppDB;
 
 // Ok... Let's go
-db.version(1).stores({
-  exam_sessions: "id", // this is just for indexing I suppose
+db.version(2).stores({
+  exam_sessions: "id, createdAt",
   questions: "id"
 });

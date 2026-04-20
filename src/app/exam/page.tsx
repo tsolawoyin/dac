@@ -21,7 +21,9 @@ import {
 export default function Page() {
   const { db } = useApp();
   //   Yeah that's true oo... I didnt even see the pattern clearly sef
-  const exams = useLiveQuery<ExamSession[]>(() => db.exam_sessions.toArray());
+  const exams = useLiveQuery<ExamSession[]>(() =>
+    db.exam_sessions.orderBy("createdAt").reverse().toArray()
+  );
 
   if (!exams)
     return (

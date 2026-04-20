@@ -38,7 +38,7 @@ function ExamContent() {
   const { timeLeft, currentExam, questionMap } = useExamContext();
 
   return (
-    <div className="grid flex-1 grid-rows-[auto_1fr] gap-5">
+    <div className="grid flex-1 grid-rows-[auto_1fr] gap-5 pb-15">
       <div className="flex justify-between text-2xl items-center">
         <div>{timeLeft}</div>
         <div className="text-red-600 text-3xl">
@@ -168,6 +168,17 @@ function RenderQuestion() {
           onJump={jumpTo}
         />
         {/* <Footer /> */}
+        <p className="fixed bottom-0 mt-auto w-full bg-white py-3 text-center text-xs text-muted-foreground">
+          Spot an error?{" "}
+          <a
+            href="https://wa.me/2348162200772"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-foreground transition-colors"
+          >
+            Report it
+          </a>
+        </p>
       </div>
     </div>
   );
@@ -220,14 +231,13 @@ const QuestionInt = ({
       <p className="text-lg font-medium">{question.question}</p>
       <div className="grid gap-2">
         {(examQ.shuffledOptions ?? question.options).map((option) => (
-          <Button
+          <button
             key={option}
-            variant="outline"
-            className={`justify-start text-left ${getOptionStyle(option)}`}
+            className={`w-full rounded-md border border-border bg-background px-3 py-2 text-left text-sm font-medium shadow-xs transition-all hover:bg-muted ${getOptionStyle(option)}`}
             onClick={() => selectAnswer(option)}
           >
             {option}
-          </Button>
+          </button>
         ))}
       </div>
       {showAnswer && question.explanation && (
