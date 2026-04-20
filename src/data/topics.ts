@@ -25,4 +25,9 @@ export const topics: Topic[] = [
     name: "Anterior part of the Thigh",
     subject: "gross-anatomy-101",
   },
+  {
+    id: "cardiovascular-system-001",
+    name: "Cardiovascular system",
+    subject: "physiology-101",
+  },
 ];

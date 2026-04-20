@@ -2490,4 +2490,1028 @@ export const questions = [
       "The femoral triangle is in the proximal thigh containing femoral vessels, nerve, and lymphatics. The adductor canal begins at the apex of the femoral triangle and runs in the middle third of the thigh beneath the sartorius, transmitting the femoral vessels downward.",
     is_visible: true,
   },
+  {
+    id: "001",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which structure is known as the normal pacemaker of the heart?",
+    options: ["AV node", "Purkinje fibers", "SA node", "Bundle of His"],
+    answer: "SA node",
+    explanation:
+      "The sinoatrial (SA) node is the normal pacemaker because it has the highest intrinsic rate of spontaneous depolarization.",
+    is_visible: true,
+  },
+  {
+    id: "002",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: The AV node conducts impulses faster than Purkinje fibers.",
+    options: ["true", "false"],
+    answer: "false",
+    explanation:
+      "Purkinje fibers conduct impulses much faster than the AV node.",
+    is_visible: true,
+  },
+  {
+    id: "003",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "What is the normal resting heart rate range in adults?",
+    options: ["20-40 bpm", "40-60 bpm", "60-100 bpm", "100-140 bpm"],
+    answer: "60-100 bpm",
+    explanation:
+      "The normal resting heart rate for adults is between 60 and 100 beats per minute.",
+    is_visible: true,
+  },
+  {
+    id: "004",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: The fibrous AV ring allows free spread of impulses from atria to ventricles.",
+    options: ["true", "false"],
+    answer: "false",
+    explanation:
+      "The fibrous AV ring acts as an electrical insulator between atria and ventricles.",
+    is_visible: true,
+  },
+  {
+    id: "005",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which part of the cardiac conduction system delays the electrical impulse?",
+    options: ["SA node", "AV node", "Bundle branches", "Purkinje fibers"],
+    answer: "AV node",
+    explanation: "The AV node delays the impulse to allow ventricular filling.",
+    is_visible: true,
+  },
+  {
+    id: "006",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Purkinje fibers have the fastest conduction velocity in the heart.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Purkinje fibers conduct impulses very rapidly to ensure simultaneous ventricular contraction.",
+    is_visible: true,
+  },
+  {
+    id: "007",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "What is the approximate resting membrane potential of ventricular muscle cells?",
+    options: ["-30 mV", "-60 mV", "-90 mV", "+20 mV"],
+    answer: "-90 mV",
+    explanation:
+      "Ventricular muscle cells have a stable resting membrane potential of about -90 mV.",
+    is_visible: true,
+  },
+  {
+    id: "008",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Phase 2 of the ventricular action potential is known as the plateau phase.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Phase 2 is the plateau phase caused by calcium influx balancing potassium efflux.",
+    is_visible: true,
+  },
+  {
+    id: "009",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which ion is mainly responsible for phase 0 depolarization in ventricular muscle cells?",
+    options: ["Calcium", "Potassium", "Sodium", "Chloride"],
+    answer: "Sodium",
+    explanation:
+      "Rapid sodium influx is responsible for phase 0 depolarization in ventricular muscle.",
+    is_visible: true,
+  },
+  {
+    id: "010",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Cardiac muscle can undergo tetany like skeletal muscle.",
+    options: ["true", "false"],
+    answer: "false",
+    explanation:
+      "The long refractory period prevents tetany in cardiac muscle.",
+    is_visible: true,
+  },
+  {
+    id: "031",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which hormone increases heart rate and contractility?",
+    options: ["Insulin", "Thyroxine", "Parathyroid hormone", "Glucagon"],
+    answer: "Thyroxine",
+    explanation:
+      "Thyroid hormones increase heart rate and cardiac contractility.",
+    is_visible: true,
+  },
+  {
+    id: "032",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "True or False: Catecholamines increase heart rate.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Catecholamines such as epinephrine and norepinephrine increase heart rate.",
+    is_visible: true,
+  },
+  {
+    id: "033",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "What is the formula for cardiac output?",
+    options: ["CO = BP × HR", "CO = HR × SV", "CO = SV ÷ HR", "CO = MAP × SV"],
+    answer: "CO = HR × SV",
+    explanation:
+      "Cardiac output is calculated by multiplying heart rate by stroke volume.",
+    is_visible: true,
+  },
+  {
+    id: "034",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: A normal cardiac output in adults is approximately 5 L/min.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation: "Normal resting cardiac output is around 5 liters per minute.",
+    is_visible: true,
+  },
+  {
+    id: "035",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "What is stroke volume?",
+    options: [
+      "Volume of blood pumped by one ventricle per beat",
+      "Volume of blood in the atria",
+      "Volume of blood returning to the heart",
+      "Volume of blood in arteries",
+    ],
+    answer: "Volume of blood pumped by one ventricle per beat",
+    explanation:
+      "Stroke volume is the amount of blood ejected by one ventricle during each beat.",
+    is_visible: true,
+  },
+  {
+    id: "036",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Increasing venous return increases cardiac output.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Greater venous return increases end-diastolic volume and stroke volume.",
+    is_visible: true,
+  },
+  {
+    id: "037",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which law explains that increased filling of the heart leads to stronger contraction?",
+    options: ["Laplace law", "Starling law", "Boyle law", "Poiseuille law"],
+    answer: "Starling law",
+    explanation:
+      "The Frank-Starling law states that increased preload increases force of contraction.",
+    is_visible: true,
+  },
+  {
+    id: "038",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: The Frank-Starling mechanism depends on increased end-diastolic volume.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Increased end-diastolic volume stretches the myocardium and increases contraction.",
+    is_visible: true,
+  },
+  {
+    id: "039",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which of the following increases cardiac output?",
+    options: [
+      "Decreased heart rate",
+      "Increased stroke volume",
+      "Increased vagal activity",
+      "Hypothyroidism",
+    ],
+    answer: "Increased stroke volume",
+    explanation: "Cardiac output rises when stroke volume increases.",
+    is_visible: true,
+  },
+  {
+    id: "040",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Parasympathetic stimulation strongly increases ventricular contractility.",
+    options: ["true", "false"],
+    answer: "false",
+    explanation:
+      "Parasympathetic supply has little effect on ventricular myocardium.",
+    is_visible: true,
+  },
+  {
+    id: "041",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "What is systolic blood pressure?",
+    options: [
+      "Pressure during ventricular relaxation",
+      "Pressure during ventricular contraction",
+      "Pressure in veins",
+      "Pressure in capillaries",
+    ],
+    answer: "Pressure during ventricular contraction",
+    explanation:
+      "Systolic pressure is the highest arterial pressure during ventricular systole.",
+    is_visible: true,
+  },
+  {
+    id: "042",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Diastolic blood pressure is the pressure during ventricular relaxation.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation: "Diastolic pressure occurs during ventricular relaxation.",
+    is_visible: true,
+  },
+  {
+    id: "043",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "What is pulse pressure?",
+    options: [
+      "Systolic pressure + diastolic pressure",
+      "Systolic pressure - diastolic pressure",
+      "Mean arterial pressure",
+      "Diastolic pressure ÷ systolic pressure",
+    ],
+    answer: "Systolic pressure - diastolic pressure",
+    explanation:
+      "Pulse pressure is the difference between systolic and diastolic pressures.",
+    is_visible: true,
+  },
+  {
+    id: "044",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Mean arterial pressure is closer to diastolic pressure than systolic pressure.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "MAP is closer to diastolic pressure because the heart spends more time in diastole.",
+    is_visible: true,
+  },
+  {
+    id: "045",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which receptor detects changes in blood pressure?",
+    options: [
+      "Chemoreceptors",
+      "Baroreceptors",
+      "Proprioceptors",
+      "Pain receptors",
+    ],
+    answer: "Baroreceptors",
+    explanation:
+      "Baroreceptors detect stretch changes caused by blood pressure changes.",
+    is_visible: true,
+  },
+  {
+    id: "046",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Baroreceptors are found in the carotid sinus and aortic arch.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "The major arterial baroreceptors are located in the carotid sinus and aortic arch.",
+    is_visible: true,
+  },
+  {
+    id: "047",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "What happens when blood pressure rises suddenly?",
+    options: [
+      "Heart rate increases",
+      "Baroreceptor firing decreases",
+      "Parasympathetic activity increases",
+      "Sympathetic activity increases",
+    ],
+    answer: "Parasympathetic activity increases",
+    explanation:
+      "Increased blood pressure stimulates baroreceptors and increases vagal activity.",
+    is_visible: true,
+  },
+  {
+    id: "048",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Sympathetic stimulation causes vasoconstriction in most blood vessels.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Sympathetic stimulation usually causes vasoconstriction through alpha receptors.",
+    is_visible: true,
+  },
+  {
+    id: "049",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which of the following decreases blood pressure?",
+    options: [
+      "Increased cardiac output",
+      "Increased peripheral resistance",
+      "Decreased blood volume",
+      "Increased sympathetic activity",
+    ],
+    answer: "Decreased blood volume",
+    explanation:
+      "A fall in blood volume reduces venous return and blood pressure.",
+    is_visible: true,
+  },
+  {
+    id: "050",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Arterioles are the major resistance vessels of the circulation.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation: "Arterioles provide most of the resistance to blood flow.",
+    is_visible: true,
+  },
+  {
+    id: "051",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which vessels are primarily responsible for exchange of gases and nutrients?",
+    options: ["Arteries", "Veins", "Capillaries", "Arterioles"],
+    answer: "Capillaries",
+    explanation:
+      "Capillaries are thin-walled vessels specialized for exchange of gases, nutrients, and wastes.",
+    is_visible: true,
+  },
+  {
+    id: "052",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Capillary hydrostatic pressure promotes filtration of fluid out of capillaries.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Capillary hydrostatic pressure pushes fluid out of capillaries into the interstitial space.",
+    is_visible: true,
+  },
+  {
+    id: "053",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which pressure pulls fluid back into capillaries?",
+    options: [
+      "Capillary hydrostatic pressure",
+      "Interstitial hydrostatic pressure",
+      "Plasma oncotic pressure",
+      "Arterial pressure",
+    ],
+    answer: "Plasma oncotic pressure",
+    explanation:
+      "Plasma proteins create oncotic pressure which pulls fluid into capillaries.",
+    is_visible: true,
+  },
+  {
+    id: "054",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Edema can result from increased capillary hydrostatic pressure.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Higher capillary hydrostatic pressure causes more fluid to leave capillaries and may lead to edema.",
+    is_visible: true,
+  },
+  {
+    id: "055",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which structure returns excess tissue fluid back to the bloodstream?",
+    options: ["Arteries", "Capillaries", "Lymphatics", "Venules"],
+    answer: "Lymphatics",
+    explanation:
+      "The lymphatic system returns excess interstitial fluid to the circulation.",
+    is_visible: true,
+  },
+  {
+    id: "056",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Decreased plasma protein concentration can lead to edema.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Reduced plasma proteins decrease oncotic pressure and favor fluid accumulation in tissues.",
+    is_visible: true,
+  },
+  {
+    id: "057",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which special circulation has the highest blood flow per gram of tissue?",
+    options: [
+      "Pulmonary circulation",
+      "Coronary circulation",
+      "Renal circulation",
+      "Skin circulation",
+    ],
+    answer: "Renal circulation",
+    explanation:
+      "The kidneys receive a very high blood flow relative to their size.",
+    is_visible: true,
+  },
+  {
+    id: "058",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Coronary blood flow is greatest during ventricular diastole.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Coronary vessels are compressed during systole, so most coronary blood flow occurs during diastole.",
+    is_visible: true,
+  },
+  {
+    id: "059",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which circulation is characterized by low pressure and low resistance?",
+    options: [
+      "Systemic circulation",
+      "Coronary circulation",
+      "Pulmonary circulation",
+      "Renal circulation",
+    ],
+    answer: "Pulmonary circulation",
+    explanation:
+      "Pulmonary circulation operates at much lower pressure than systemic circulation.",
+    is_visible: true,
+  },
+  {
+    id: "060",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Cerebral blood flow remains relatively constant despite moderate changes in blood pressure.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Cerebral autoregulation helps maintain fairly constant blood flow to the brain.",
+    is_visible: true,
+  },
+  {
+    id: "061",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which factor is the strongest local regulator of cerebral blood flow?",
+    options: ["Oxygen", "Carbon dioxide", "Calcium", "Glucose"],
+    answer: "Carbon dioxide",
+    explanation: "Carbon dioxide is a major regulator of cerebral blood flow.",
+    is_visible: true,
+  },
+  {
+    id: "062",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "True or False: Skin blood flow increases in hot weather.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation: "Skin blood flow increases to promote heat loss.",
+    is_visible: true,
+  },
+  {
+    id: "063",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which blood vessel normally carries oxygenated blood from the lungs to the heart?",
+    options: [
+      "Pulmonary artery",
+      "Aorta",
+      "Pulmonary vein",
+      "Superior vena cava",
+    ],
+    answer: "Pulmonary vein",
+    explanation:
+      "Pulmonary veins carry oxygenated blood from the lungs to the left atrium.",
+    is_visible: true,
+  },
+  {
+    id: "064",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "True or False: The pulmonary artery carries deoxygenated blood.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "The pulmonary artery carries deoxygenated blood from the right ventricle to the lungs.",
+    is_visible: true,
+  },
+  {
+    id: "065",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which valve closes to produce the first heart sound?",
+    options: [
+      "Aortic valve",
+      "Pulmonary valve",
+      "Mitral valve",
+      "Aortic and pulmonary valves",
+    ],
+    answer: "Mitral valve",
+    explanation:
+      "The first heart sound occurs due to closure of the AV valves, including the mitral valve.",
+    is_visible: true,
+  },
+  {
+    id: "066",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: The second heart sound is produced by closure of the semilunar valves.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Closure of the aortic and pulmonary valves produces the second heart sound.",
+    is_visible: true,
+  },
+  {
+    id: "067",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which phase of the cardiac cycle immediately follows atrial systole?",
+    options: [
+      "Rapid ejection",
+      "Reduced filling",
+      "Isovolumetric ventricular contraction",
+      "Rapid filling",
+    ],
+    answer: "Isovolumetric ventricular contraction",
+    explanation:
+      "Atrial systole is followed by isovolumetric ventricular contraction.",
+    is_visible: true,
+  },
+  {
+    id: "068",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: During isovolumetric contraction, all heart valves are closed.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "During isovolumetric contraction, both AV and semilunar valves are closed.",
+    is_visible: true,
+  },
+  {
+    id: "069",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which phase of ventricular diastole involves rapid entry of blood into the ventricles?",
+    options: [
+      "Protodiastole",
+      "Rapid filling",
+      "Isovolumetric relaxation",
+      "Reduced ejection",
+    ],
+    answer: "Rapid filling",
+    explanation:
+      "Rapid filling occurs when AV valves open and blood enters the ventricles quickly.",
+    is_visible: true,
+  },
+  {
+    id: "070",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Ventricular systole lasts longer than ventricular diastole at rest.",
+    options: ["true", "false"],
+    answer: "false",
+    explanation:
+      "At rest, ventricular diastole lasts longer than ventricular systole.",
+    is_visible: true,
+  },
+  {
+    id: "071",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "What is the approximate duration of one normal cardiac cycle at 75 beats per minute?",
+    options: ["0.2 seconds", "0.5 seconds", "0.8 seconds", "1.5 seconds"],
+    answer: "0.8 seconds",
+    explanation:
+      "One normal cardiac cycle lasts about 0.8 seconds at a heart rate around 75 bpm.",
+    is_visible: true,
+  },
+  {
+    id: "072",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Atrial systole contributes the final portion of ventricular filling.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Atrial contraction provides the last portion of blood entering the ventricles.",
+    is_visible: true,
+  },
+  {
+    id: "073",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which chamber has the thickest wall?",
+    options: [
+      "Right atrium",
+      "Left atrium",
+      "Right ventricle",
+      "Left ventricle",
+    ],
+    answer: "Left ventricle",
+    explanation:
+      "The left ventricle has the thickest wall because it pumps blood to the systemic circulation.",
+    is_visible: true,
+  },
+  {
+    id: "074",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: The right ventricle pumps blood into the systemic circulation.",
+    options: ["true", "false"],
+    answer: "false",
+    explanation:
+      "The right ventricle pumps blood into the pulmonary circulation.",
+    is_visible: true,
+  },
+  {
+    id: "075",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which blood vessel leaves the left ventricle?",
+    options: [
+      "Pulmonary artery",
+      "Aorta",
+      "Superior vena cava",
+      "Pulmonary vein",
+    ],
+    answer: "Aorta",
+    explanation:
+      "The aorta carries blood from the left ventricle to the systemic circulation.",
+    is_visible: true,
+  },
+  {
+    id: "076",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: The superior vena cava drains blood into the left atrium.",
+    options: ["true", "false"],
+    answer: "false",
+    explanation: "The superior vena cava drains blood into the right atrium.",
+    is_visible: true,
+  },
+  {
+    id: "077",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which valve lies between the left atrium and left ventricle?",
+    options: [
+      "Tricuspid valve",
+      "Pulmonary valve",
+      "Mitral valve",
+      "Aortic valve",
+    ],
+    answer: "Mitral valve",
+    explanation:
+      "The mitral valve separates the left atrium from the left ventricle.",
+    is_visible: true,
+  },
+  {
+    id: "078",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: The tricuspid valve lies between the right atrium and right ventricle.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "The tricuspid valve separates the right atrium from the right ventricle.",
+    is_visible: true,
+  },
+  {
+    id: "079",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which vessel returns oxygenated blood from the lungs to the heart?",
+    options: [
+      "Pulmonary artery",
+      "Pulmonary vein",
+      "Aorta",
+      "Inferior vena cava",
+    ],
+    answer: "Pulmonary vein",
+    explanation: "Pulmonary veins carry oxygenated blood to the left atrium.",
+    is_visible: true,
+  },
+  {
+    id: "080",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: The aortic valve is located between the left ventricle and aorta.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "The aortic valve controls blood flow from the left ventricle into the aorta.",
+    is_visible: true,
+  },
+  {
+    id: "081",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which blood vessel carries deoxygenated blood from the body to the right atrium?",
+    options: [
+      "Aorta",
+      "Pulmonary vein",
+      "Superior vena cava",
+      "Pulmonary artery",
+    ],
+    answer: "Superior vena cava",
+    explanation:
+      "The superior vena cava carries deoxygenated blood from the upper body to the right atrium.",
+    is_visible: true,
+  },
+  {
+    id: "082",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: The pulmonary valve is located between the right ventricle and pulmonary artery.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "The pulmonary valve opens from the right ventricle into the pulmonary artery.",
+    is_visible: true,
+  },
+  {
+    id: "083",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which phase of ventricular systole involves blood being ejected from the ventricles?",
+    options: [
+      "Isovolumetric contraction",
+      "Rapid ejection",
+      "Rapid filling",
+      "Protodiastole",
+    ],
+    answer: "Rapid ejection",
+    explanation:
+      "Rapid ejection occurs when blood is forcefully pumped out of the ventricles.",
+    is_visible: true,
+  },
+  {
+    id: "084",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "True or False: During rapid filling, the AV valves are open.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "During rapid filling, the AV valves are open, allowing blood into the ventricles.",
+    is_visible: true,
+  },
+  {
+    id: "085",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which phase of the cardiac cycle is also called diastasis?",
+    options: [
+      "Rapid filling",
+      "Reduced ventricular filling",
+      "Protodiastole",
+      "Rapid ejection",
+    ],
+    answer: "Reduced ventricular filling",
+    explanation: "Reduced ventricular filling is also called diastasis.",
+    is_visible: true,
+  },
+  {
+    id: "086",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "True or False: S1 is louder than S2 at the base of the heart.",
+    options: ["true", "false"],
+    answer: "false",
+    explanation:
+      "S2 is louder at the base of the heart, while S1 is louder at the apex.",
+    is_visible: true,
+  },
+  {
+    id: "087",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which heart sound is associated with closure of the mitral and tricuspid valves?",
+    options: ["S1", "S2", "S3", "S4"],
+    answer: "S1",
+    explanation: "S1 is produced by closure of the AV valves.",
+    is_visible: true,
+  },
+  {
+    id: "088",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "True or False: S3 is always pathological in children.",
+    options: ["true", "false"],
+    answer: "false",
+    explanation: "S3 can be normal in children and young adults.",
+    is_visible: true,
+  },
+  {
+    id: "089",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which heart sound may be heard in ventricular hypertrophy?",
+    options: ["S1", "S2", "S3", "S4"],
+    answer: "S4",
+    explanation:
+      "S4 may occur when the atria contract against a stiff ventricle.",
+    is_visible: true,
+  },
+  {
+    id: "090",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "True or False: S4 occurs during atrial contraction.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation: "S4 occurs when the atria contract against a stiff ventricle.",
+    is_visible: true,
+  },
+  {
+    id: "091",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which part of the circulation has the lowest blood pressure?",
+    options: ["Aorta", "Arterioles", "Capillaries", "Vena cava"],
+    answer: "Vena cava",
+    explanation:
+      "Blood pressure is lowest in the vena cava near the right atrium.",
+    is_visible: true,
+  },
+  {
+    id: "092",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "True or False: Veins act as capacitance vessels.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "Veins store large amounts of blood and are called capacitance vessels.",
+    is_visible: true,
+  },
+  {
+    id: "093",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "Which blood vessel has the highest pressure?",
+    options: ["Aorta", "Capillary", "Vein", "Pulmonary artery"],
+    answer: "Aorta",
+    explanation: "The aorta has the highest pressure in the circulation.",
+    is_visible: true,
+  },
+  {
+    id: "094",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: Resistance to blood flow is inversely related to the fourth power of vessel radius.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "According to Poiseuille's law, resistance is inversely proportional to radius to the fourth power.",
+    is_visible: true,
+  },
+  {
+    id: "095",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which factor causes vasodilation in skeletal muscle during exercise?",
+    options: [
+      "Decreased carbon dioxide",
+      "Increased oxygen",
+      "Increased adenosine",
+      "Decreased temperature",
+    ],
+    answer: "Increased adenosine",
+    explanation:
+      "Adenosine is a local vasodilator released during increased metabolic activity.",
+    is_visible: true,
+  },
+  {
+    id: "096",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "True or False: Nitric oxide causes vasoconstriction.",
+    options: ["true", "false"],
+    answer: "false",
+    explanation: "Nitric oxide is a potent vasodilator.",
+    is_visible: true,
+  },
+  {
+    id: "097",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which substance is released by endothelial cells and causes vasodilation?",
+    options: ["Histamine", "Bradykinin", "Nitric oxide", "Angiotensin II"],
+    answer: "Nitric oxide",
+    explanation:
+      "Nitric oxide is released by endothelial cells and relaxes vascular smooth muscle.",
+    is_visible: true,
+  },
+  {
+    id: "098",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question: "True or False: Angiotensin II is a powerful vasodilator.",
+    options: ["true", "false"],
+    answer: "false",
+    explanation: "Angiotensin II is a powerful vasoconstrictor.",
+    is_visible: true,
+  },
+  {
+    id: "099",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "Which hormone promotes sodium and water retention and increases blood pressure?",
+    options: ["Insulin", "Aldosterone", "Thyroxine", "Glucagon"],
+    answer: "Aldosterone",
+    explanation:
+      "Aldosterone increases sodium and water retention, increasing blood volume and pressure.",
+    is_visible: true,
+  },
+  {
+    id: "100",
+    subject: "physiology-101",
+    topic: "cardiovascular-system-001",
+    question:
+      "True or False: ADH can help increase blood pressure by increasing water reabsorption.",
+    options: ["true", "false"],
+    answer: "true",
+    explanation:
+      "ADH increases water reabsorption and can increase blood pressure.",
+    is_visible: true,
+  },
 ];
