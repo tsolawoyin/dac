@@ -83,8 +83,7 @@ export default function Config() {
     setLoadingText(
       loadingMessages[Math.floor(Math.random() * loadingMessages.length)],
     );
-
-    return;
+    
     const id = v4();
 
     // This will be a list of gettings in the future....
