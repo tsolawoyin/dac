@@ -23,6 +23,7 @@ import { Subject } from "@/data/subjects";
 import { Topic } from "@/data/topics";
 import { Question, questions } from "@/data/questions";
 import Link from "next/link";
+import { ModeToggle } from "./toggler";
 
 export interface Exam {
   subject: Subject;
@@ -80,7 +81,7 @@ export default function Config() {
     "Shuffling...",
     "Crunching...",
     "Calculating",
-    "Dillydallying"
+    "Dillydallying",
   ];
 
   const handleCreate = async () => {
@@ -133,6 +134,9 @@ export default function Config() {
 
   return (
     <div className="flex-2 grid items-center">
+      <div className="absolute top-3 right-3">
+        <ModeToggle />
+      </div>
       <div className="grid gap-5">
         <p className="text-center text-2xl font-bold">D💀C</p>
         <div className="grid gap-3">
@@ -227,6 +231,7 @@ export default function Config() {
         <Button variant="link" className="w-full underline">
           <Link href={"/exam"}>View past exams</Link>
         </Button>
+        {/* <p>No data is collected in this app. YOUR RESULTS REMAIN ON YOUR PHONE. No one can view it.</p> */}
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ function ExamInt({ exam }: { exam: ExamSession }) {
   return (
     <div className="flex items-start justify-between rounded-md border p-3 hover:bg-muted transition-colors">
       <Link href={`/exam/${exam.id}`} className="grid gap-1 flex-1">
-        <p className="underline underline-offset-2 font-medium text-sm">
+        <p className="underline underline-offset-2 font-medium text-sm dark:font-normal dark:no-underline">
           {firstExam?.subject.name} — {firstExam?.topic.name}
         </p>
         <div className="flex items-center gap-3 text-sm text-muted-foreground">
