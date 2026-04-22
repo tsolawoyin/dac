@@ -35,6 +35,20 @@ export default function useExam(examId: string) {
           setCurrentExam(active || session.exams[0]);
           setSubmitted(session.finished);
 
+          // compute time immediately to avoid a frame where timeLeft is "00:00:00"
+          const [h, m, s] = session.duration.split(":").map(Number);
+          const durationSecs = h * 3600 + m * 60 + s;
+          const elapsed = Math.floor(
+            (Date.now() - new Date(session.createdAt).getTime()) / 1000,
+          );
+          const remaining = Math.max(durationSecs - elapsed, 0);
+          const rh = Math.floor(remaining / 3600);
+          const rm = Math.floor((remaining % 3600) / 60);
+          const rs = remaining % 60;
+          setTimeLeft(
+            `${String(rh).padStart(2, "0")}:${String(rm).padStart(2, "0")}:${String(rs).padStart(2, "0")}`,
+          );
+
           // build question map
           const allIds = new Set(
             session.exams.flatMap((exam) =>
@@ -73,12 +87,6 @@ export default function useExam(examId: string) {
     return `${String(hrs).padStart(2, "0")}:${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
   };
 
-  // set initial time once session loads
-  useEffect(() => {
-    if (examSession) {
-      setTimeLeft(calcTimeLeft());
-    }
-  }, [examSession]);
 
   const markUp = () => {
     setCurrentExam((draft) => {

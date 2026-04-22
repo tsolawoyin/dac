@@ -1,5 +1,6 @@
 "use client";
 import { Suspense, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { ExamQuestion } from "@/components/config";
 import { useParams } from "next/navigation";
 import ExamProvider, { useExamContext } from "@/app/exam/[id]/exam-provider";
@@ -15,6 +16,13 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Page() {
   return (
@@ -40,27 +48,28 @@ function ExamContent() {
 
   return (
     <div className="grid flex-1 grid-rows-[auto_1fr] gap-5 pb-15">
-      {/* this is the only thing that needs fixing */}
-      {/* <div>
-        {exams.map((exam) => {
-          return (
-            <div
-              onClick={() => {
-                console.log("hello");
-                // now let's switch things up
-                setCurrentExam((draft) => {
-                  draft = exam;
-                  return draft;
-                });
-              }}
-            >
-              {exam.subject.name}-{exam.topic.name}
-            </div>
-          );
-        })}
-      </div> */}
-      <div className="flex justify-between text-2xl items-center">
+      <div className="flex items-center justify-between text-2xl">
         <div>{timeLeft}</div>
+        {exams.length > 1 && (
+          <Select
+            value={currentExam.id}
+            onValueChange={(id) => {
+              const exam = exams.find((e) => e.id === id);
+              if (exam) setCurrentExam(() => exam);
+            }}
+          >
+            <SelectTrigger className="h-auto w-auto max-w-40 gap-1.5 border-none bg-transparent px-2 py-1 text-sm font-medium shadow-none">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent align="center">
+              {exams.map((exam) => (
+                <SelectItem key={exam.id} value={exam.id}>
+                  {exam.topic.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
         <div className="text-red-600 text-3xl">
           {Number(currentExam.noq) > 0
             ? Math.round((currentExam.score / Number(currentExam.noq)) * 100)
@@ -68,7 +77,7 @@ function ExamContent() {
           %
         </div>
       </div>
-      <RenderQuestion />
+      <RenderQuestion key={currentExam.id} />
     </div>
   );
 }
@@ -132,18 +141,27 @@ function RenderQuestion() {
 
   return (
     <div className="grid h-full grid-rows-[1fr_auto] gap-4">
-      <div className="mt-7">
-        <div className="grid gap-4 overflow-y-auto">
-          <div className="text-sm text-muted-foreground">
-            Question {currentIndex + 1} of {questions.length}
-          </div>
-          <QuestionInt
-            examQ={examQ}
-            marked={currentExam.questions[currentIndex].marked}
-            disabled={examEnded}
-            examEnded={examEnded}
-          />
-        </div>
+      <div className="mt-7 overflow-y-auto">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={examQ.id}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="grid gap-4"
+          >
+            <div className="text-sm text-muted-foreground">
+              Question {currentIndex + 1} of {questions.length}
+            </div>
+            <QuestionInt
+              examQ={examQ}
+              marked={currentExam.questions[currentIndex].marked}
+              disabled={examEnded}
+              examEnded={examEnded}
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
       <div className="grid gap-5">
         <div className="flex gap-4">
@@ -260,11 +278,19 @@ const QuestionInt = ({
           </button>
         ))}
       </div>
-      {showAnswer && question.explanation && (
-        <p className="text-sm text-muted-foreground mt-2">
-          {question.explanation}
-        </p>
-      )}
+      <AnimatePresence>
+        {showAnswer && question.explanation && (
+          <motion.p
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="text-sm text-muted-foreground mt-2"
+          >
+            {question.explanation}
+          </motion.p>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -299,13 +325,15 @@ function QuestionNav({
   return (
     <div className="flex flex-wrap gap-2">
       {questions.map((eq, index) => (
-        <button
+        <motion.button
           key={eq.id}
+          layout
+          transition={{ duration: 0.15 }}
           className={`flex h-8 w-8 items-center justify-center rounded-md border text-sm font-medium transition-colors hover:opacity-80 ${getKeyStyle(eq, index)}`}
           onClick={() => onJump(index)}
         >
           {index + 1}
-        </button>
+        </motion.button>
       ))}
     </div>
   );

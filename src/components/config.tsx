@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   Select,
   SelectContent,
@@ -147,18 +148,27 @@ export default function Config() {
   return (
     <div className="flex-2 grid items-center">
       <div className="grid gap-5">
-        {selections.map((selection, index) => {
-          return (
-            <SelectionInt
-              key={index}
-              index={index}
-              selection={selection}
-              setSelections={setSelections}
-              canRemove={selections.length > 1}
-            />
-          );
-        })}
+        <AnimatePresence initial={false}>
+          {selections.map((selection, index) => (
+            <motion.div
+              key={selection.id}
+              layout
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+            >
+              <SelectionInt
+                index={index}
+                selection={selection}
+                setSelections={setSelections}
+                canRemove={selections.length > 1}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
         {/* Exactly... */}
+        {selections.length < 4 && (
         <button
           className="flex w-full items-center justify-center gap-1.5 rounded-[14px] border-[1.5px] border-dashed border-muted-foreground/30 py-3.5 text-sm text-muted-foreground transition-colors active:bg-muted/50"
           onClick={() => {
@@ -180,6 +190,7 @@ export default function Config() {
           <Plus className="h-3 w-3" />
           Add combination
         </button>
+        )}
         <div className="grid gap-3">
           <Input
             placeholder="Enter time in minutes"
