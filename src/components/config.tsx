@@ -20,7 +20,7 @@ import { useRouter } from "next/navigation";
 import { v4 } from "uuid";
 import { Subject } from "@/data/subjects";
 import { Topic } from "@/data/topics";
-import { Question, questions } from "@/data/questions";
+import { Question } from "@/data/questions";
 import Link from "next/link";
 import { ModeToggle } from "./toggler";
 import { MasteryBadge } from "./mastery-badge";
@@ -58,20 +58,29 @@ export interface ExamQuestion {
 // my brain is working at the speed of light...
 
 export default function Config() {
-  const { subjects, topics, db } = useApp();
-  //   It will be easy to extend later....
+  const { subjects, topics, questions, db } = useApp();
+
   const firstSubject = subjects[0];
-  const [selections, setSelections] = useImmer<Exam[]>([
-    {
-      id: "selection-0",
-      subject: firstSubject,
-      topic: topics.filter((topic) => topic.subject == firstSubject.id)[0],
-      noq: "",
-      questions: [],
-      currentQuestion: 0,
-      score: 0,
-    },
-  ]);
+  const [selections, setSelections] = useImmer<Exam[]>([]);
+  const [initialized, setInitialized] = useState(false);
+
+  console.log(selections);
+  // Initialize selections once data is loaded from db
+  useEffect(() => {
+    if (initialized || subjects.length === 0 || topics.length === 0) return;
+    setSelections([
+      {
+        id: "selection-0",
+        subject: firstSubject,
+        topic: topics.filter((topic) => topic.subject == firstSubject.id)[0],
+        noq: "",
+        questions: [],
+        currentQuestion: 0,
+        score: 0,
+      },
+    ]);
+    setInitialized(true);
+  }, [subjects, topics]);
 
   const [time, setTime] = useState("");
   const [markInstantly, setMarkInstantly] = useState(true);
@@ -114,7 +123,7 @@ export default function Config() {
     // generate questions for each selection
     const exams: Exam[] = selections.map((sel) => {
       const noq = Math.min(parseInt(sel.noq, 10) || 20, 100);
-      const generated = getRandomQuestions(sel.subject.id, sel.topic.id, noq);
+      const generated = getRandomQuestions(questions, sel.subject.id, sel.topic.id, noq);
       return {
         id: v4(),
         subject: sel.subject,
@@ -145,6 +154,14 @@ export default function Config() {
       setIsLoading(false);
     }
   };
+
+  if (!initialized) {
+    return (
+      <div className="flex-2 grid items-center justify-center">
+        <Loader2Icon className="animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex-2 grid items-center">
@@ -288,7 +305,7 @@ function SelectionInt({
         </SelectContent>
       </Select>
       <Select
-        value={selection.topic.id}
+        value={selection.topic?.id}
         onValueChange={(value) => {
           const top = topics.find((top) => top.id == value);
           if (top) {
@@ -341,6 +358,7 @@ const convertTime = (time: string) => {
 
 // this function will end up being an rpc function laslas....
 const getRandomQuestions = (
+  questions: Question[],
   subjectId: string,
   topicId: string,
   count: number,

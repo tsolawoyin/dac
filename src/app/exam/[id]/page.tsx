@@ -344,3 +344,6 @@ function QuestionNav({
     </div>
   );
 }
+
+// I think one of the things I can do to take this app a step further is storing the questions online. 
+// But before that, let me first store the questions on user device if they don't have it already....

@@ -4,9 +4,6 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import AppProvider from "@/app/app-provider";
 // Data static for now
-import { subjects } from "@/data/subjects";
-import { topics } from "@/data/topics";
-import { questions } from "@/data/questions";
 import { ThemeProvider } from "@/components/theme-store";
 import Header from "@/components/ui/header";
 
@@ -59,11 +56,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AppProvider
-            subjects={subjects}
-            topics={topics}
-            questions={questions}
-          >
+          {/* That is to prevent server-side latency actually */}
+          <AppProvider>
             <div className="h-dvh flex flex-col max-w-3xl m-auto p-3">
               <Header />
               {children}

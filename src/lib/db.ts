@@ -1,6 +1,8 @@
 import { Dexie, type EntityTable } from "dexie";
 import { ExamSession } from "@/components/config";
 import { Question } from "@/data/questions";
+import { Subject } from "@/data/subjects";
+import { Topic } from "@/data/topics";
 
 export interface Attempt {
   timestamp: number; // Date.now()
@@ -18,6 +20,8 @@ export type AppDB = Dexie & {
   exam_sessions: EntityTable<ExamSession, "id">;
   questions: EntityTable<Question, "id">;
   question_stats: EntityTable<QuestionStat, "questionId">;
+  subjects: EntityTable<Subject, "id">;
+  topics: EntityTable<Topic, "id">;
 }
 // Typescript
 export const db = new Dexie("dac") as AppDB;
@@ -39,4 +43,13 @@ db.version(4).stores({
   exam_sessions: "id, createdAt",
   questions: "id",
   question_stats: "questionId, subjectId, topicId"
+});
+
+// v5: Add subjects and topics tables for offline-first data
+db.version(5).stores({
+  exam_sessions: "id, createdAt",
+  questions: "id, subject, topic",
+  question_stats: "questionId, subjectId, topicId",
+  subjects: "id",
+  topics: "id, subject"
 });
