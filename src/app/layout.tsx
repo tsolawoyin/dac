@@ -6,6 +6,7 @@ import AppProvider from "@/app/app-provider";
 // Data static for now
 import { ThemeProvider } from "@/components/theme-store";
 import Header from "@/components/ui/header";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -76,6 +77,7 @@ export default function RootLayout({
               {children}
             </div>
           </AppProvider>
+          <Toaster position="top-center" />
         </ThemeProvider>
       </body>
     </html>

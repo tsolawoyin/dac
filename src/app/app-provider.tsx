@@ -10,6 +10,7 @@ import { Subject } from "@/data/subjects";
 import { Topic } from "@/data/topics";
 import { Question } from "@/data/questions";
 import { db, AppDB } from "@/lib/db";
+import { backfillStreaks } from "@/lib/backfill-streaks"; // BACKFILL — remove with backfill-streaks.ts
 
 interface App {
   subjects: Subject[];
@@ -59,6 +60,7 @@ export default function AppProvider({
     }
 
     loadData();
+    backfillStreaks(); // BACKFILL — remove with backfill-streaks.ts
   }, []);
 
   const app = {

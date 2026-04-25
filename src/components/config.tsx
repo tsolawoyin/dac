@@ -19,6 +19,7 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { ChevronDown, InfoIcon, Loader2Icon, Plus, X } from "lucide-react";
+import { toast } from "sonner";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 import { useApp } from "@/app/app-provider";
@@ -30,6 +31,7 @@ import { Question } from "@/data/questions";
 import Link from "next/link";
 import { ModeToggle } from "./toggler";
 import { MasteryBadge } from "./mastery-badge";
+import { StreakBadge } from "./streak-badge";
 import { useImmer, Updater } from "use-immer";
 
 export interface Exam {
@@ -109,15 +111,25 @@ export default function Config() {
     "Dillydallying",
   ];
 
-  const canStart =
-    selections.length > 0 &&
-    selections.every((s) => {
+  const validate = (): string | null => {
+    if (selections.length === 0) return "Add at least one subject";
+    for (let i = 0; i < selections.length; i++) {
+      const s = selections[i];
+      if (s.topics.length === 0) return `Selection ${i + 1}: pick at least one topic`;
       const n = parseInt(s.noq, 10);
-      return !isNaN(n) && n >= 1 && n <= 100 && s.topics.length > 0;
-    }) &&
-    time !== "";
+      if (isNaN(n) || n < 1) return `Selection ${i + 1}: enter number of questions`;
+      if (n > 100) return `Selection ${i + 1}: max 100 questions`;
+    }
+    if (time === "") return "Enter exam duration";
+    return null;
+  };
 
   const handleCreate = async () => {
+    const error = validate();
+    if (error) {
+      toast.error(error);
+      return;
+    }
     setIsLoading(true);
     setLoadingText(
       loadingMessages[Math.floor(Math.random() * loadingMessages.length)],
@@ -171,6 +183,7 @@ export default function Config() {
   return (
     <div className="flex-2 grid items-center">
       <div className="grid gap-5">
+        <StreakBadge />
         <AnimatePresence initial={false}>
           {selections.map((selection, index) => (
             <motion.div
@@ -224,7 +237,7 @@ export default function Config() {
               setTime(time);
             }}
           />
-          <Button onClick={handleCreate} disabled={isLoading || !canStart}>
+          <Button onClick={handleCreate} disabled={isLoading}>
             {isLoading && <Loader2Icon className="animate-spin" />}
             {isLoading
               ? loadingText

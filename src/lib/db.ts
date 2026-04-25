@@ -21,6 +21,12 @@ export interface Meta {
   value: string;
 }
 
+export interface StreakLog {
+  date: string; // YYYY-MM-DD, primary key
+  questionsAnswered: number;
+  questionsCorrect: number;
+}
+
 export type AppDB = Dexie & {
   exam_sessions: EntityTable<ExamSession, "id">;
   questions: EntityTable<Question, "id">;
@@ -28,6 +34,7 @@ export type AppDB = Dexie & {
   subjects: EntityTable<Subject, "id">;
   topics: EntityTable<Topic, "id">;
   meta: EntityTable<Meta, "key">;
+  streak_log: EntityTable<StreakLog, "date">;
 }
 // Typescript
 export const db = new Dexie("dac") as AppDB;
@@ -97,4 +104,15 @@ db.version(8).stores({
       }
     }
   });
+});
+
+// v9: Add streak_log table for daily activity tracking
+db.version(9).stores({
+  exam_sessions: "id, createdAt",
+  questions: "id, subject, topic",
+  question_stats: "questionId, subjectId, topicId",
+  subjects: "id, order",
+  topics: "id, subject, order",
+  meta: "key",
+  streak_log: "date",
 });

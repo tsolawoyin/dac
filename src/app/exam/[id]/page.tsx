@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import ExamProvider, { useExamContext } from "@/app/exam/[id]/exam-provider";
 import { useApp } from "@/app/app-provider";
 import { recordAttempt } from "@/lib/record-attempt";
+import { useStreak } from "@/hooks/streak";
 import { Button } from "@/components/ui/button";
 import {
   AlertDialog,
@@ -95,6 +96,7 @@ function ResultsDialog({
   onClose: () => void;
   exams: { subject: { name: string }; topics: { name: string }[]; score: number; noq: string }[];
 }) {
+  const streak = useStreak();
   const totalScore = exams.reduce((sum, e) => sum + e.score, 0);
   const totalQuestions = exams.reduce((sum, e) => sum + Number(e.noq), 0);
   const avgPercent =
@@ -138,6 +140,11 @@ function ResultsDialog({
               <div className="mt-2 text-center text-3xl font-bold">
                 {avgPercent}%
               </div>
+              {streak?.todayDone && (
+                <p className="text-center text-sm text-muted-foreground">
+                  Day {streak.current} streak
+                </p>
+              )}
             </div>
           </AlertDialogDescription>
         </AlertDialogHeader>
