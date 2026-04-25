@@ -93,7 +93,7 @@ function ResultsDialog({
 }: {
   open: boolean;
   onClose: () => void;
-  exams: { topics: { name: string }[]; score: number; noq: string }[];
+  exams: { subject: { name: string }; topics: { name: string }[]; score: number; noq: string }[];
 }) {
   const totalScore = exams.reduce((sum, e) => sum + e.score, 0);
   const totalQuestions = exams.reduce((sum, e) => sum + Number(e.noq), 0);
@@ -120,7 +120,7 @@ function ResultsDialog({
                     <span className="truncate">
                       {exam.topics.length === 1
                         ? exam.topics[0].name
-                        : `${exam.topics.length} topics`}
+                        : `${exam.subject.name} - ${exam.topics.length} topics`}
                     </span>
                     <span className="shrink-0 font-medium">{pct}%</span>
                   </div>
