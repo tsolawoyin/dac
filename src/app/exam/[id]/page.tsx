@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import ExamProvider, { useExamContext } from "@/app/exam/[id]/exam-provider";
 import { useApp } from "@/app/app-provider";
 import { recordAttempt } from "@/lib/record-attempt";
+import { recordXpForExam } from "@/lib/record-xp";
 import { useStreak } from "@/hooks/streak";
 import { Button } from "@/components/ui/button";
 import {
@@ -219,9 +220,24 @@ function RenderQuestion() {
     });
   }, [currentIndex, setCurrentExam]);
 
+  // Detect the exact moment the exam transitions to "ended" (submit or time-up).
+  // This fires once and triggers two things:
+  //   1. Show the results dialog
+  //   2. Batch-record XP for all answered questions in ALL exams in this session.
+  //      XP is intentionally deferred to exam completion so the badge doesn't
+  //      update live during the exam (which would be distracting and leak score info).
   const wasEnded = useRef(examEnded);
   useEffect(() => {
-    if (examEnded && !wasEnded.current) setShowResults(true);
+    if (examEnded && !wasEnded.current) {
+      setShowResults(true);
+
+      // Batch-record XP for every exam in the session.
+      // We iterate all exams (not just currentExam) because a session can
+      // contain multiple exams (multi-topic sessions).
+      for (const exam of exams) {
+        void recordXpForExam(db, exam.questions, questionMap);
+      }
+    }
     wasEnded.current = examEnded;
   }, [examEnded]);
 

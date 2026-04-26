@@ -91,11 +91,34 @@ export const topics: Topic[] = [
     subject: "physiology-101",
     order: 9,
   },
-
   {
-    id: "cardiovascular-system-001",
-    name: "Cardiovascular system",
+    id: "cardiac-electrophysiology-and-ecg",
+    name: "CVS - Electrophysiology and ECG",
     subject: "physiology-101",
-    order: 20,
+    order: 10,
+  },
+  {
+    id: "cardiac-mechanics-and-pump-function",
+    name: "CVS - Mechanics and pump function",
+    subject: "physiology-101",
+    order: 11,
+  },
+  {
+    id: "heart-rate-and-blood-pressure-regulation",
+    name: "CVS - Heart rate and regulation",
+    subject: "physiology-101",
+    order: 12,
+  },
+  {
+    id: "microcirculation-and-fluid-exchange",
+    name: "CVS - Microcirculation and Fluid Ex.",
+    subject: "physiology-101",
+    order: 13,
+  },
+  {
+    id: "special-circulation",
+    name: "CVS - Special Circulation",
+    subject: "physiology-101",
+    order: 14,
   },
 ];

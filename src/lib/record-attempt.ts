@@ -36,4 +36,5 @@ export async function recordAttempt(
   } else {
     await db.streak_log.add({ date: today, questionsAnswered: 1, questionsCorrect: correct ? 1 : 0 });
   }
+
 }

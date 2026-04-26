@@ -1,5 +1,6 @@
 import { ModeToggle } from "../toggler";
 import { StreakBadge } from "../streak-badge";
+import { XpBadge } from "../xp-badge";
 import Link from "next/link";
 
 export default function Header() {
@@ -9,6 +10,7 @@ export default function Header() {
         <p className="text-2xl font-bold tracking-tight">D💀C</p>
       </Link>
       <div className="flex items-center gap-3">
+        <XpBadge />
         <StreakBadge />
         <ModeToggle />
       </div>
