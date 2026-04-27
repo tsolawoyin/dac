@@ -121,4 +121,16 @@ export const topics: Topic[] = [
     subject: "physiology-101",
     order: 14,
   },
+  {
+    id: "renal-structure-and-blood-flow",
+    name: "Renal - Strucuture and Blood flow",
+    subject: "physiology-101",
+    order: 15,
+  },
+  {
+    id: "glomerular-filtration",
+    name: "Rneal - Glomerular filtration",
+    subject: "physiology-101",
+    order: 15,
+  },
 ];
