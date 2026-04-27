@@ -7,6 +7,7 @@ import ExamProvider, { useExamContext } from "@/app/exam/[id]/exam-provider";
 import { useApp } from "@/app/app-provider";
 import { recordAttempt } from "@/lib/record-attempt";
 import { recordXpForExam } from "@/lib/record-xp";
+import { syncStats } from "@/lib/sync-stats";
 import { useStreak } from "@/hooks/streak";
 import { Button } from "@/components/ui/button";
 import {
@@ -237,6 +238,8 @@ function RenderQuestion() {
       for (const exam of exams) {
         void recordXpForExam(db, exam.questions, questionMap);
       }
+
+      void syncStats();
     }
     wasEnded.current = examEnded;
   }, [examEnded]);

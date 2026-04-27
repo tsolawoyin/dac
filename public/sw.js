@@ -4,13 +4,19 @@
 // Bump this version when you deploy to clear old caches.
 // The browser detects sw.js changed → installs new SW →
 // activate event wipes stale caches → next visit is fresh.
-const CACHE_VERSION = "dac-v3";
+const CACHE_VERSION = "dac-v4";
+
+// App shell pages to precache on install so the app works
+// offline even if the user only visited once while online.
+const PRECACHE_URLS = ["/", "/exam"];
 
 // ---- INSTALL ------------------------------------------------
-// Nothing to precache — we cache lazily as the user navigates.
-// skipWaiting() tells the new SW to take over immediately
-// instead of waiting for all tabs to close.
-self.addEventListener("install", () => {
+// Precache the app shell pages and their critical assets.
+// skipWaiting() tells the new SW to take over immediately.
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_VERSION).then((cache) => cache.addAll(PRECACHE_URLS))
+  );
   self.skipWaiting();
 });
 
@@ -32,16 +38,22 @@ self.addEventListener("activate", (event) => {
 });
 
 // ---- FETCH --------------------------------------------------
-// Two strategies based on request type:
+// Three strategies based on request type:
 //
-// 1. Navigation (HTML pages) → Network-first
-//    Try the network. If it works, cache the response and serve it.
-//    If offline, fall back to the cached version.
+// 1. _next/static/ (hashed build assets) → Cache-first
+//    These filenames contain a content hash so they're immutable.
+//    Serve from cache instantly; only fetch on first encounter.
 //
-// 2. Static assets (JS, CSS, images, fonts) → Stale-while-revalidate
-//    Serve from cache instantly for speed. Meanwhile, fetch the
-//    fresh version from the network and update the cache silently.
-//    Next visit gets the updated asset.
+// 2. Navigation (HTML pages) → Network-first with offline fallback
+//    Try the network. If offline, serve cached page.
+//    If that specific page was never cached, serve the cached "/"
+//    app shell — since every page is "use client", the client
+//    router re-renders the correct route once JS hydrates.
+//
+// 3. Everything else (other JS, CSS, images, fonts, RSC payloads)
+//    → Stale-while-revalidate
+//    Serve from cache instantly. Update the cache in the background.
+//    If not cached and offline, fail silently.
 self.addEventListener("fetch", (event) => {
   const { request } = event;
 
@@ -51,36 +63,55 @@ self.addEventListener("fetch", (event) => {
   // Skip chrome-extension, devtools, etc.
   if (!request.url.startsWith("http")) return;
 
-  if (request.mode === "navigate") {
-    // ---- Strategy 1: Network-first for page navigations ----
-    event.respondWith(
-      fetch(request)
-        .then((response) => {
-          // Clone before caching because response body can only be read once
-          const clone = response.clone();
-          caches.open(CACHE_VERSION).then((cache) => cache.put(request, clone));
-          return response;
-        })
-        .catch(() =>
-          // Offline — try the cache
-          caches.match(request)
-        )
-    );
-  } else {
-    // ---- Strategy 2: Stale-while-revalidate for assets ----
+  const url = new URL(request.url);
+
+  // ---- Strategy 1: Cache-first for immutable build assets ----
+  if (url.pathname.startsWith("/_next/static/")) {
     event.respondWith(
       caches.open(CACHE_VERSION).then((cache) =>
         cache.match(request).then((cached) => {
-          // Fire off network fetch regardless — updates cache in background
-          const networkFetch = fetch(request).then((response) => {
+          if (cached) return cached;
+          return fetch(request).then((response) => {
             cache.put(request, response.clone());
             return response;
           });
-
-          // Return cached version immediately, or wait for network if no cache
-          return cached || networkFetch;
         })
       )
     );
+    return;
   }
+
+  // ---- Strategy 2: Network-first for page navigations ----
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_VERSION).then((c) => c.put(request, clone));
+          return response;
+        })
+        .catch(() =>
+          caches
+            .match(request)
+            .then((cached) => cached || caches.match("/"))
+        )
+    );
+    return;
+  }
+
+  // ---- Strategy 3: Stale-while-revalidate for everything else ----
+  event.respondWith(
+    caches.open(CACHE_VERSION).then((cache) =>
+      cache.match(request).then((cached) => {
+        const networkFetch = fetch(request)
+          .then((response) => {
+            cache.put(request, response.clone());
+            return response;
+          })
+          .catch(() => cached); // offline: silently fall back to cache
+
+        return cached || networkFetch;
+      })
+    )
+  );
 });

@@ -10,6 +10,7 @@ import { Subject } from "@/data/subjects";
 import { Topic } from "@/data/topics";
 import { Question } from "@/data/questions";
 import { db, AppDB } from "@/lib/db";
+import { syncStats } from "@/lib/sync-stats";
 
 interface App {
   subjects: Subject[];
@@ -58,7 +59,7 @@ export default function AppProvider({
       }
     }
 
-    loadData();
+    loadData().then(() => void syncStats());
   }, []);
 
   const app = {
